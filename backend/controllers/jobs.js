@@ -17,8 +17,12 @@ async function getJobs(req, res) {
 
 async function createJob(req, res) {
   try {
+    console.log("Controller Request Body: ", req.body); 
+
     const data = await jobsModel.createJob(req.body);
+    
     res.json(data);
+
   } catch (err) {
     console.log(err);
     res.status(500).json({ errorMsg: err.message });
