@@ -13,15 +13,15 @@ const jobSchema = new Schema({
   //   ref: "User",
   //   required: true
   // },
-  title: {
+  industry: {
     type: String,
     required: true
   },
-  description: {
+  companyType: {
     type: String,
     required: true
   },
-  company: {
+  companyName: {
     type: String,
     required: true
   },
@@ -29,16 +29,60 @@ const jobSchema = new Schema({
     type: String,
     required: true
   },
+  companySize: {
+    type: String,
+    required: true
+  },
+  companyWebsite: {
+    type: String,
+    required: true
+  },
   image: {
     type: String,
     required: false 
+  },
+  title: {
+    type: String,
+    required: true
+  },
+  workArrangement: {
+    type: String,
+    required: true
+  },
+  employmentTeam: {
+    type: String,
+    required: true
   },
   skills: {
     type: [String],
     required: true
   },
+  jobOffers: {
+    type: String,
+    required: true
+  },
+  responsibilities: {
+    type: String,
+    required: true
+  },
+  requirements: {
+    type: String,
+    required: true
+  },
+  employmentType: {
+    type: String,
+    required: true
+  },
+  certifications: {
+    type: [String],
+    required: false
+  },
   salary: {
     type: Number,
+    required: true
+  },
+  description: {
+    type: String,
     required: true
   },
   date_posted: {

@@ -8,5 +8,11 @@ router.get("/", jobsCtrl.getJobs);
 /* POST Job data (create post by user) */
 router.post("/createjob", jobsCtrl.createJob);
 
+/* PATCH Job data (create post by user) */
+router.patch("/updatejob/:listing_id", jobsCtrl.updateJob); 
+
+/* DELETE Job data (create post by user) */
+router.delete("/deletejob/:listing_id", jobsCtrl.deleteJob); 
+
 module.exports = router;
  
