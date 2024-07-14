@@ -81,7 +81,15 @@ const jobSchema = new Schema({
     type: Number,
     required: true
   },
-  description: {
+  descriptions: {
+    type: String,
+    required: true
+  },
+  yoe: {
+    type: Number,
+    required: true
+  },
+  seniority: {
     type: String,
     required: true
   },
