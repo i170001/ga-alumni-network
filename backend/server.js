@@ -11,6 +11,7 @@ require("./client/users");
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var jobsRouter = require('./routes/jobs');
+var profilesRouter = require('./routes/profiles')
 var cloudinaryRouter= require('./client/cloudinary');
 
 var app = express();
@@ -29,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/jobs', jobsRouter);
+app.use('/profile', profilesRouter)
 app.use('/api/cloudinary', cloudinaryRouter);
 
 // catch 404 and forward to error handler
