@@ -1,19 +1,19 @@
 const profilesDao = require('../daos/profiles');
 
 module.exports = {
-    getProfiles,
+    // getProfiles,
     getProfile,
     createProfile,
-    findOneAndUpdate,
-    findOneAndDelete
+    // findOneAndUpdate,
+    // findOneAndDelete
 }
 
-function getProfiles(queryFields) {
+// function getProfiles(queryFields) {
+//     return profilesDao.find(queryFields)
+// }
+
+function getProfile(queryFields) {
     return profilesDao.find(queryFields)
-}
-
-function getProfile(user_id) {
-    return profilesDao.findOne(user_id)
 }
 
 async function createProfile(body) {
@@ -28,23 +28,23 @@ async function createProfile(body) {
     return {success: true, data: newUser}
 }
 
-async function findOneAndUpdate(filter, update, options) {
-    try {
-        const updatedProfile = await profilesDao.findByIdAndUpdate(filter, update, options);
-        return updatedProfile;
-    } catch (error) {
-        console.error('Error updating profile', error);
-        throw error
-    }
-}
+// async function findOneAndUpdate(filter, update, options) {
+//     try {
+//         const updatedProfile = await profilesDao.findByIdAndUpdate(filter, update, options);
+//         return updatedProfile;
+//     } catch (error) {
+//         console.error('Error updating profile', error);
+//         throw error
+//     }
+// }
 
-async function findOneAndDelete(filter, options) {
-    try {
-        const deleteProfile = await profilesDao.findOneAndDelete(filter, options)
-        return deletedProfile; 
-    } catch (error) {
-        console.error('Error deleting profile', error);
-        throw error
-    }
-}
+// async function findOneAndDelete(filter, options) {
+//     try {
+//         const deleteProfile = await profilesDao.findOneAndDelete(filter, options)
+//         return deletedProfile; 
+//     } catch (error) {
+//         console.error('Error deleting profile', error);
+//         throw error
+//     }
+// }
 

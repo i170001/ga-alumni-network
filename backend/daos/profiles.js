@@ -69,7 +69,7 @@ const workExperienceSchema = new Schema ({
         type: String, 
         required: true
     },
-    occupation: {
+    specialisation: {
         type: String,
         required: false
     },
@@ -132,11 +132,11 @@ const profileSchema = new Schema({
         required: true
     },
 
-    user_id: {
-        type: Schema.Types.ObjectId,
-        ref: "User",
-        required: true
-    }, 
+    // user_id: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: "User",
+    //     required: true
+    // }, 
 
     personal_details: personalDetailsSchema,
 
