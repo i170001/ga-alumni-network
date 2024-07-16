@@ -142,11 +142,11 @@ const profileSchema = new Schema({
 
     contact_details: contactDetailsSchema,
 
-    ga_experience: gaExperienceSchema,
+    ga_experience: [gaExperienceSchema],
 
-    work_experience: workExperienceSchema, 
+    work_experience: [workExperienceSchema], 
 
-    education_experience: educationExpSchema,
+    education_experience: [educationExpSchema],
 
     skills: {
         type: [String],
@@ -158,7 +158,10 @@ const profileSchema = new Schema({
         default: Date.now
     }
 
-}, {timestamps: true}
+}, {
+    timestamps: true,
+    collection: 'profiles'
+}
 
 );
 
