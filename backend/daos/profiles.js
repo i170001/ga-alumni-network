@@ -69,7 +69,7 @@ const workExperienceSchema = new Schema ({
         type: String, 
         required: true
     },
-    occupation: {
+    specialisation: {
         type: String,
         required: false
     },
@@ -132,21 +132,21 @@ const profileSchema = new Schema({
         required: true
     },
 
-    user_id: {
-        type: Schema.Types.ObjectId,
-        ref: "User",
-        required: true
-    }, 
+    // user_id: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: "User",
+    //     required: true
+    // }, 
 
     personal_details: personalDetailsSchema,
 
     contact_details: contactDetailsSchema,
 
-    ga_experience: gaExperienceSchema,
+    ga_experience: [gaExperienceSchema],
 
-    work_experience: workExperienceSchema, 
+    work_experience: [workExperienceSchema], 
 
-    education_experience: educationExpSchema,
+    education_experience: [educationExpSchema],
 
     skills: {
         type: [String],
@@ -158,7 +158,10 @@ const profileSchema = new Schema({
         default: Date.now
     }
 
-}, {timestamps: true}
+}, {
+    timestamps: true,
+    collection: 'profiles'
+}
 
 );
 

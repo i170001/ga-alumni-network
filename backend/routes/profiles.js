@@ -2,10 +2,19 @@ var express = require('express')
 var router = express.Router();
 var profilesCtrl = require('../controllers/profiles')
 
-//GET profiles
-router.get("/", profilesCtrl.getProfiles);
+//GET profiles by query params - user searches for others
+// router.get('/', profilesCtrl.getProfiles);
 
-//POST profiles' fields 
+//GET user's own profile 
+router.get('/:id', profilesCtrl.getProfile)
+
+//POST create profile (handled with user signup)
 router.post('/', profilesCtrl.createProfile);
+
+//PATCH user edits own profile 
+// router.patch('/:id', profilesCtrl.updateProfile)
+
+//DELETE profile data
+// router.delete('/:id', profilesCtrl.deleteProfile)
 
 module.exports = router; 
