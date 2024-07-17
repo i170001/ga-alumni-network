@@ -3,11 +3,11 @@ const Schema = mongoose.Schema;
 
 //Personal details
 const personalDetailsSchema = new Schema({
-    first_name: {
+    firstName: {
         type: String, 
         required: true
     },
-    last_name: {
+    lastName: {
         type: String, 
         required: true
     },
@@ -15,7 +15,7 @@ const personalDetailsSchema = new Schema({
         type: String, 
         required: false
     },
-    additional_name: {
+    additionalName: {
         type: String, 
         required: false
     }
@@ -45,11 +45,11 @@ const contactDetailsSchema = new Schema({
 //GA Experience 
 
 const gaExperienceSchema = new Schema ({
-    course_attended: {
+    gaCourse: {
         type: String, 
         required: true
     },
-    gradyear: {
+    gradYear: {
         type: String, 
         required: true
     }
@@ -57,15 +57,15 @@ const gaExperienceSchema = new Schema ({
 
 //Work Experience
 const workExperienceSchema = new Schema ({
-    current_job: {
+    currentJob: {
         type: Boolean, 
         required: false
     },
-    company_name: {
+    companyName: {
         type: String, 
         required: true
     }, 
-    job_title: {
+    jobTitle: {
         type: String, 
         required: true
     },
@@ -85,11 +85,11 @@ const workExperienceSchema = new Schema ({
         type: String, 
         required: true
     },
-    employment_type: {
+    employmentType: {
         type: String, 
         required: true
     },
-    work_description: {
+    workDescription: {
         type: String, 
         required: false
     }
@@ -101,23 +101,23 @@ const educationExpSchema = new Schema ({
         type: Boolean, 
         required: false
     },
-    qualification_type: {
+    qualificationType: {
         type: String,
         required: true
     },
-    field_of_study: {
+    fieldOfStudy: {
         type: String, 
         required: true
     },
-    institution_name: {
+    institutionName: {
         type: String, 
         required: false
     },
-    year_attained: {
+    yearAttained: {
         type: Number,
         required: false, 
     },
-    qualification_name: {
+    qualificationName: {
         type: String, 
         required: false
     }
@@ -138,15 +138,15 @@ const profileSchema = new Schema({
     //     required: true
     // }, 
 
-    personal_details: personalDetailsSchema,
+    personalDetails: personalDetailsSchema,
 
-    contact_details: contactDetailsSchema,
+    contactDetails: contactDetailsSchema,
 
-    ga_experience: [gaExperienceSchema],
+    gaExperience: [gaExperienceSchema],
 
-    work_experience: [workExperienceSchema], 
+    workExperience: [workExperienceSchema], 
 
-    education_experience: [educationExpSchema],
+    educationExperience: [educationExpSchema],
 
     skills: {
         type: [String],
