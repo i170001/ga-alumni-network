@@ -12,8 +12,17 @@ module.exports = {
 //     return profilesDao.find(queryFields)
 // }
 
-function getProfile(queryFields) {
-    return profilesDao.find(queryFields)
+// async function getProfile(queryFields) {
+//     return profilesDao.find(queryFields)
+// }
+
+async function getProfile(listing_id) {
+    try {
+    const profile = await profilesDao.findOne({listing_id});
+        return profile
+    } catch (error) {
+        throw new Error (error.message) 
+    }     
 }
 
 async function createProfile(body) {

@@ -6,7 +6,7 @@ var profilesCtrl = require('../controllers/profiles')
 // router.get('/', profilesCtrl.getProfiles);
 
 //GET user's own profile 
-router.get('/', profilesCtrl.getProfile)
+router.get('/:id', profilesCtrl.getProfile)
 
 //POST create profile (handled with user signup)
 router.post('/', profilesCtrl.createProfile);
