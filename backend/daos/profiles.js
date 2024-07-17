@@ -33,7 +33,7 @@ const contactDetailsSchema = new Schema({
         required: true
     },
     phone: {
-        type: String, 
+        type: Number, 
         required: false
     },
     website: {
@@ -45,13 +45,13 @@ const contactDetailsSchema = new Schema({
 //GA Experience 
 
 const gaExperienceSchema = new Schema ({
-    course_attended: {
+    gaCourse: {
         type: String, 
-        required: true
+        required: false
     },
-    gradyear: {
-        type: String, 
-        required: true
+    gradYear: {
+        type: Date, 
+        required: false
     }
 })
 
