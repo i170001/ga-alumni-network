@@ -25,16 +25,20 @@ async function getProfile(listing_id) {
     }     
 }
 
-async function createProfile(body) {
-    console.log('Model request body', body)
+async function createProfile(profileData) {
+    try {
+        // Check if profile exists
+        const existingProfile = await profilesDao.findOne({ 'listing_id': profileData.listing_id });
+        if (existingProfile) {
+            return { success: false, error: 'Profile already exists' };
+        }
 
-    const data = await profilesDao.findOne({'listing_id': body.listing_id})
-    console.log(data);
-    if (data) {
-        return {success: false, error: 'Profile already exists'}
+        const newProfile = await profilesDao.create(profileData);
+        return { success: true, data: newProfile };
+    } catch (error) {
+        console.log(error);
+        throw new Error('Failed to create profile');
     }
-    const newUser = await profilesDao.create(body);
-    return {success: true, data: newUser}
 }
 
 // async function findOneAndUpdate(filter, update, options) {
