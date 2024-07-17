@@ -51,17 +51,26 @@ async function getProfile(req, res) {
 
 async function createProfile(req, res) {
     try {
-        const { user_id, personalDetails, contactDetails, gaExperience, workExperience, educationExperience, profilePic } = req.body;
+        const {
+            user_id,
+            personalDetails,
+            contactDetails,
+            gaExperience,
+            workExperience,
+            educationExperience,
+            profilePic,
+            skills
+        } = req.body;
 
-        // Assuming personalDetails is directly included in req.body
         const profileData = {
-            user_id, 
-            personal_details: personalDetails, 
-            contact_details: contactDetails, 
+            user_id,
+            personal_details: personalDetails,
+            contact_details: contactDetails,
             ga_experience: gaExperience,
             work_experience: workExperience,
             education_experience: educationExperience,
-            profile_pic: profilePic 
+            profile_pic: profilePic,
+            skills: skills,
         };
 
         const { success, data, error } = await profileModel.createProfile(profileData);
@@ -72,7 +81,7 @@ async function createProfile(req, res) {
 
         res.status(201).json(data);
     } catch (error) {
-        console.log(error);
+        console.error("Error creating profile:", error);
         res.status(500).json({ error: 'Failed to create profile' });
     }
 }
