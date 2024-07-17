@@ -17,7 +17,7 @@ const personalDetailsSchema = new Schema({
     },
     additional_name: {
         type: String, 
-        require: false
+        required: false
     }
 })
 
@@ -28,7 +28,7 @@ const contactDetailsSchema = new Schema({
         type: String, 
         required: true
     },
-    github_link: {
+    githubLink: {
         type: String, 
         required: true
     },
