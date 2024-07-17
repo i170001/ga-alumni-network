@@ -3,11 +3,11 @@ const Schema = mongoose.Schema;
 
 //Personal details
 const personalDetailsSchema = new Schema({
-    first_name: {
+    firstName: {
         type: String, 
         required: true
     },
-    last_name: {
+    lastName: {
         type: String, 
         required: true
     },
@@ -15,7 +15,7 @@ const personalDetailsSchema = new Schema({
         type: String, 
         required: false
     },
-    additional_name: {
+    additionalName: {
         type: String, 
         require: false
     }
@@ -28,7 +28,7 @@ const contactDetailsSchema = new Schema({
         type: String, 
         required: true
     },
-    github_link: {
+    githubLink: {
         type: String, 
         required: true
     },
@@ -57,17 +57,17 @@ const gaExperienceSchema = new Schema ({
 
 //Work Experience
 const workExperienceSchema = new Schema ({
-    current_job: {
+    isCurrentJob: {
         type: Boolean, 
         required: false
     },
-    company_name: {
+    companyName: {
         type: String, 
         required: true
     }, 
-    job_title: {
+    jobTitle: {
         type: String, 
-        required: true
+        required: false
     },
     specialisation: {
         type: String,
@@ -75,7 +75,7 @@ const workExperienceSchema = new Schema ({
     },
     fromDate: {
         type: String, 
-        required: true
+        required: false
     },
     toDate: {
         type: String, 
@@ -83,13 +83,13 @@ const workExperienceSchema = new Schema ({
     },
     industry: {
         type: String, 
-        required: true
+        required: false
     },
-    employment_type: {
+    employmentType: {
         type: String, 
-        required: true
+        required: false
     },
-    work_description: {
+    workDescription: {
         type: String, 
         required: false
     }
@@ -97,27 +97,27 @@ const workExperienceSchema = new Schema ({
 
 //Education experience 
 const educationExpSchema = new Schema ({
-    current_edu: {
+    isCurrentEdu: {
         type: Boolean, 
         required: false
     },
-    qualification_type: {
+    qualificationType: {
         type: String,
-        required: true
+        required: false
     },
-    field_of_study: {
-        type: String, 
-        required: true
-    },
-    institution_name: {
+    fieldOfStudy: {
         type: String, 
         required: false
     },
-    year_attained: {
-        type: Number,
-        required: false, 
+    institutionName: {
+        type: String, 
+        required: false
     },
-    qualification_name: {
+    yearAttained: {
+        type: Number,
+        required: false 
+    },
+    qualificationName: {
         type: String, 
         required: false
     }
