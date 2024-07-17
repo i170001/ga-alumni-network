@@ -1,30 +1,36 @@
-const jobsModel = require("../models/jobs")
+// controllers/jobs.js
+const jobsModel = require("../models/jobs");
 
-// highlight-start
 module.exports = {
-    getJobs,
-    createJob,
-    updateJob,
-    deleteJob,
-}
+  getJobs,
+  createJob,
+  updateJob,
+  deleteJob,
+  getUserJobs,
+};
 
 async function getJobs(req, res) {
-    try {
-        const data = await jobsModel.getJobs(req.query);
-        res.json({jobs: data})
-    } catch (err) {
-        res.status(500).json({ errorMsg: err.message });
-    }
+  try {
+    const data = await jobsModel.getJobs(req.query);
+    res.json({ jobs: data });
+  } catch (err) {
+    res.status(500).json({ errorMsg: err.message });
+  }
 }
 
 async function createJob(req, res) {
   try {
-    console.log("Controller Request Body: ", req.body); 
+    const userId = "66951a8c09843c3abe28e210";
+    // const userId = req.user.payload._id; // assuming user object has a payload with _id
+    const jobData = { ...req.body, user_id: userId };
 
-    const data = await jobsModel.createJob(req.body);
-    
-    res.json(data);
+    const data = await jobsModel.createJob(jobData);
 
+    if (!data.success) {
+      return res.status(400).json({ errorMsg: data.error });
+    }
+
+    res.status(201).json(data.data);
   } catch (err) {
     console.log(err);
     res.status(500).json({ errorMsg: err.message });
@@ -46,7 +52,7 @@ async function updateJob(req, res) {
       return res.status(404).json({ errorMsg: "Job not found" });
     }
 
-    res.json(existingJob); // Return the updated job data
+    res.json(existingJob);
   } catch (err) {
     console.error(err);
     res.status(500).json({ errorMsg: err.message });
@@ -70,6 +76,18 @@ async function deleteJob(req, res) {
     res.json({ message: "Job successfully deleted", deletedJob });
   } catch (err) {
     console.error(err);
+    res.status(500).json({ errorMsg: err.message });
+  }
+}
+
+// New function to get jobs by user_id
+async function getUserJobs(req, res) {
+  try {
+    const user_id = "66951a8c09843c3abe28e210"; // Hardcoded user_id for testing
+    // const { user_id } = req.params;
+    const data = await jobsModel.getUserJobs(user_id);
+    res.json({ jobs: data });
+  } catch (err) {
     res.status(500).json({ errorMsg: err.message });
   }
 }

@@ -8,11 +8,11 @@ const jobSchema = new Schema({
     unique: true,
     required: true
   },
-  // user_id: {
-  //   type: Schema.Types.ObjectId,
-  //   ref: "User",
-  //   required: true
-  // },
+  user_id: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+    required: true
+  },
   industry: {
     type: String,
     required: true
@@ -101,5 +101,4 @@ const jobSchema = new Schema({
   timestamps: true
 });
 
-// Compile the schema into a model and export it
 module.exports = mongoose.model("Job", jobSchema);
