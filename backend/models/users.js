@@ -41,7 +41,7 @@ async function signinUser(body) {
   }
   
   const jwtPayload = {
-    user: user.name,
+    user: user._id,
     email: user.email,
     is_admin: user.is_admin
   };

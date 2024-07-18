@@ -20,8 +20,7 @@ async function getJobs(req, res) {
 
 async function createJob(req, res) {
   try {
-    const userId = "66951a8c09843c3abe28e210";
-    // const userId = req.user.payload._id; // assuming user object has a payload with _id
+    const userId = req.body.user_id; 
     const jobData = { ...req.body, user_id: userId };
 
     const data = await jobsModel.createJob(jobData);
@@ -39,6 +38,7 @@ async function createJob(req, res) {
 
 async function updateJob(req, res) {
   try {
+    console.log("request.body.listing_id: ", req.body.listing_id)
     const { listing_id } = req.params;
     const updatedJob = req.body;
 
@@ -46,7 +46,7 @@ async function updateJob(req, res) {
       return res.status(400).json({ errorMsg: "listing_id is required" });
     }
 
-    const existingJob = await jobsModel.findOneAndUpdate({ listing_id }, updatedJob, { new: true });
+    const existingJob = await jobsModel.findOneAndUpdate({ listing_id: listing_id }, updatedJob, { new: true });
 
     if (!existingJob) {
       return res.status(404).json({ errorMsg: "Job not found" });
@@ -67,7 +67,7 @@ async function deleteJob(req, res) {
       return res.status(400).json({ errorMsg: "listing_id is required" });
     }
 
-    const deletedJob = await jobsModel.findOneAndDelete({ listing_id });
+    const deletedJob = await jobsModel.findOneAndDelete({ listing_id: listing_id });
 
     if (!deletedJob) {
       return res.status(404).json({ errorMsg: "Job not found" });
@@ -83,8 +83,7 @@ async function deleteJob(req, res) {
 // New function to get jobs by user_id
 async function getUserJobs(req, res) {
   try {
-    const user_id = "66951a8c09843c3abe28e210"; // Hardcoded user_id for testing
-    // const { user_id } = req.params;
+    const { user_id } = req.params;
     const data = await jobsModel.getUserJobs(user_id);
     res.json({ jobs: data });
   } catch (err) {

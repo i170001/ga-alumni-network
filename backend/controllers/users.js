@@ -14,10 +14,11 @@ module.exports = {
 async function signupUser(req, res) {
     try {
       const user = await Users.signupUser(req.body);
-      const profile = await Profiles.new(user.id);
-      const job = await Jobs.new(user.id);
+      // const profile = await Profiles.new(user.id);
+      // const job = await Jobs.new(user.id);
       
-      res.json({ user, profile, job });
+      // res.json({ user, profile, job });
+      res.json({ user });
     } catch (err) {
       console.log(err);
       res.status(500).json({ err });
