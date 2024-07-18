@@ -5,6 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors');
 
+var securityMiddleware = require('./middlewares/security');
+
 require("dotenv").config();
 require("./client/users");
 
@@ -26,6 +28,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(securityMiddleware.checkJWT); // is just to set req.user
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
