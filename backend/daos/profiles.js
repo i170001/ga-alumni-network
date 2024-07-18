@@ -63,11 +63,11 @@ const workExperienceSchema = new Schema ({
     },
     companyName: {
         type: String, 
-        required: true
+        required: false
     }, 
     jobTitle: {
         type: String, 
-        required: true
+        required: false
     },
     specialisation: {
         type: String,
@@ -83,11 +83,11 @@ const workExperienceSchema = new Schema ({
     },
     industry: {
         type: String, 
-        required: true
+        required: false
     },
     employmentType: {
         type: String, 
-        required: true
+        required: false
     },
     workDescription: {
         type: String, 
