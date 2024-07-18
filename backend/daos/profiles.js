@@ -57,7 +57,7 @@ const gaExperienceSchema = new Schema ({
 
 //Work Experience
 const workExperienceSchema = new Schema ({
-    currentJob: {
+    isCurrentJob: {
         type: Boolean, 
         required: false
     },
@@ -97,7 +97,7 @@ const workExperienceSchema = new Schema ({
 
 //Education experience 
 const educationExpSchema = new Schema ({
-    current_edu: {
+    isCurrentEdu: {
         type: Boolean, 
         required: false
     },
@@ -138,15 +138,15 @@ const profileSchema = new Schema({
     //     required: true
     // }, 
 
-    personalDetails: personalDetailsSchema,
+    personal_details: personalDetailsSchema,
 
-    contactDetails: contactDetailsSchema,
+    contact_details: contactDetailsSchema,
 
-    gaExperience: [gaExperienceSchema],
+    ga_experience: [gaExperienceSchema],
 
-    workExperience: [workExperienceSchema], 
+    work_experience: [workExperienceSchema], 
 
-    educationExperience: [educationExpSchema],
+    education_experience: [educationExpSchema],
 
     skills: {
         type: [String],
