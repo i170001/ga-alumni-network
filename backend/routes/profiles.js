@@ -6,13 +6,13 @@ var profilesCtrl = require('../controllers/profiles')
 // router.get('/', profilesCtrl.getProfiles);
 
 //GET user's own profile 
-router.get('/:id', profilesCtrl.getProfile)
+router.get('/:listing_id', profilesCtrl.getProfile)
 
 //POST create profile (handled with user signup)
 router.post('/', profilesCtrl.createProfile);
 
 //PATCH user edits own profile 
-// router.patch('/:id', profilesCtrl.updateProfile)
+router.patch('/:listing_id', profilesCtrl.updateProfile)
 
 //DELETE profile data
 // router.delete('/:id', profilesCtrl.deleteProfile)

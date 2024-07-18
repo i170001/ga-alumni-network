@@ -4,7 +4,7 @@ module.exports = {
     // getProfiles,
     getProfile,
     createProfile,
-    // findOneAndUpdate,
+    updateProfile,
     // findOneAndDelete
 }
 
@@ -41,15 +41,15 @@ async function createProfile(profileData) {
     }
 }
 
-// async function findOneAndUpdate(filter, update, options) {
-//     try {
-//         const updatedProfile = await profilesDao.findByIdAndUpdate(filter, update, options);
-//         return updatedProfile;
-//     } catch (error) {
-//         console.error('Error updating profile', error);
-//         throw error
-//     }
-// }
+async function updateProfile(filter, update, options) {
+    try {
+        const updatedProfile = await profilesDao.findOneAndUpdate(filter, update, options);
+        return updatedProfile;
+    } catch (error) {
+        console.error('Error updating profile', error);
+        throw error
+    }
+}
 
 // async function findOneAndDelete(filter, options) {
 //     try {

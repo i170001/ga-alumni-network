@@ -5,7 +5,7 @@ module.exports = {
     createProfile, 
     // getProfiles,
     getProfile,
-    // updateProfile,
+    updateProfile,
     // deleteProfile
 }
 
@@ -37,13 +37,9 @@ module.exports = {
 
 async function getProfile(req, res) {
     try {
-        const profile = await profileModel.getProfile(req.params.id);
-        if (!profile) {
-            return res.status(404).json({ message: 'Profile not found' });
-        }
-        res.json(profile);
-    } catch (error) {
-        console.log(error);
+        const data = await profileModel.getProfile(req.params.id);
+        res.json({profile: data})
+        } catch (error) {
         res.status(500).json({ message: 'Internal Server Error' });
     }
 }
@@ -87,24 +83,29 @@ async function createProfile(req, res) {
 }
 
 
-// async function updateProfile(req, res) {
-//     try {
-//         const {id} = req.params; 
-//         const updatedProfile = req.body; 
+async function updateProfile(req, res) {
+    try {
+        const { listing_id } = req.params; 
+        const updatedProfile = req.body; 
 
-//         const profile = await profileModel.findOneAndUpdate(
-//             {user_id: id},
-//             updatedProfile,
-//         )
+        if (!listing_id) {
+            return res.status(400).json({ errorMessage: "listing_id is required"})
+        }
 
-//         if (!profile) {
-//             return res.status(404).json({message: 'Profile not found'})
-//         }
-//         res.json(profile);
-//     } catch (error) {
-//         console.error(error);
-//         res.status(500).json({error: error.message})
-//     }}
+        const existingProfile = await profileModel.findOneAndUpdate(
+            { listing_id }, 
+            updatedProfile, 
+            {new: true});
+
+        if (!existingProfile) {
+            return res.status(404).json({errorMessage: "profile not found"})
+        }
+
+        res.json(existingProfile);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({errorMessage: error.message})
+    }}
 
 
 
