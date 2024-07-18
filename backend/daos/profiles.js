@@ -114,7 +114,7 @@ const educationExpSchema = new Schema ({
         required: false
     },
     yearAttained: {
-        type: Number,
+        type: String,
         required: false, 
     },
     qualificationName: {
