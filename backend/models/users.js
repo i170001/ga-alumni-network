@@ -3,6 +3,7 @@ const utilSecurity = require("../utils/security")
 
 module.exports = {
     getUsers,
+    getUser,
     getSigninDetails,
     signinUser,
     signupUser,
@@ -11,6 +12,21 @@ module.exports = {
 
 function getUsers(queryFields) {
     return daoUser.find(queryFields);
+}
+
+async function getUser(queryField) {
+  try {
+    // Use the `.select()` method to specify the fields you want to return
+    const user = await daoUser.findOne({ _id: queryField }).select('firstName lastName email');
+
+    if (!user) {
+      throw new Error('User not found');
+    }
+
+    return user;
+  } catch (error) {
+    throw new Error(error.message);
+  }
 }
 
 async function getSigninDetails(queryFields) {
