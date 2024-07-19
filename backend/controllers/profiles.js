@@ -3,12 +3,21 @@ const profileModel = require('../models/profiles')
 
 module.exports = {
     createProfile, 
-    // getProfiles,
+    getProfiles,
     getProfile,
     updateProfile,
     // deleteProfile
 }
 
+async function getProfiles(req, res) {
+  try {
+    console.log("Controller Incoming: ", req.body)
+    const data = await profileModel.getProfiles(req.query);
+    res.json({ profiles: data });
+  } catch (err) {
+    res.status(500).json({ errorMsg: err.message });
+  }
+}
 
 // async function getProfiles (req, res) {
 //     try {
