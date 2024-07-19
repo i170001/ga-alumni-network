@@ -1,7 +1,7 @@
 const profilesDao = require('../daos/profiles');
 
 module.exports = {
-    // getProfiles,
+    getProfiles,
     // getProfile,
     getUserProfile,
     createProfile,
@@ -9,9 +9,10 @@ module.exports = {
     // findOneAndDelete
 }
 
-// function getProfiles(queryFields) {
-//     return profilesDao.find(queryFields)
-// }
+function getProfiles(queryFields) {
+    console.log('Query fields received by model:', queryFields); // Log the query fields received by the model
+    return profilesDao.find(queryFields);
+  }
 
 // async function getProfile(queryFields) {
 //     return profilesDao.find(queryFields)
