@@ -16,9 +16,9 @@ router.get("/user/:user_id", jobsCtrl.getUserJobs);
 router.post("/createjob", securityMiddleware.checkSignin, jobsCtrl.createJob);
 
 // PATCH update job (owner or admin only)
-router.patch("/updatejob/:listing_id", securityMiddleware.checkPermission, securityMiddleware.checkSignin, jobsCtrl.updateJob);
+router.patch("/updatejob/:listing_id", securityMiddleware.checkSignin, jobsCtrl.updateJob);
 
 // DELETE delete job (owner or admin only)
-router.delete("/deletejob/:listing_id", securityMiddleware.checkPermission, securityMiddleware.checkSignin, jobsCtrl.deleteJob);
+router.delete("/deletejob/:listing_id", securityMiddleware.checkSignin, jobsCtrl.deleteJob);
 
 module.exports = router;
