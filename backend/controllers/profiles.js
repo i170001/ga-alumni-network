@@ -90,27 +90,26 @@ async function createProfile(req, res) {
 
 async function updateProfile(req, res) {
     try {
-        const { listing_id } = req.params; 
-        const updatedProfile = req.body; 
-
-        if (!listing_id) {
-            return res.status(400).json({ errorMessage: "listing_id is required"})
-        }
-
-        const existingProfile = await profileModel.findOneAndUpdate(
-            { listing_id }, 
-            updatedProfile, 
-            {new: true});
-
-        if (!existingProfile) {
-            return res.status(404).json({errorMessage: "profile not found"})
-        }
-
-        res.json(existingProfile);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({errorMessage: error.message})
-    }}
+      console.log("request.body.listing_id: ", req.body.listing_id)
+      const { listing_id } = req.params;
+      const updatedProfile = req.body;
+  
+      if (!listing_id) {
+        return res.status(400).json({ errorMsg: "listing_id is required" });
+      }
+  
+      const existingProfile = await profileModel.updateProfile({ listing_id: listing_id }, updatedProfile, { new: true });
+  
+      if (!existingProfile) {
+        return res.status(404).json({ errorMsg: "Profile not found" });
+      }
+  
+      res.json(existingProfile);
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ errorMsg: err.message });
+    }
+  }
 
 
 
