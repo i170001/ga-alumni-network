@@ -57,6 +57,21 @@ async function updateProfile(filter, update, options) {
         if (update.contactDetails) {
             dynamicUpdate['contact_details'] = update.contactDetails;
         }
+        if (update.profilePic) {
+            dynamicUpdate['profilePic'] = update.profilePic;
+        }
+        if (update.ga_experience) {
+            dynamicUpdate['ga_experience'] = update.ga_experience;
+        }
+        if (update.work_experience) {
+            dynamicUpdate['work_experience'] = update.work_experience;
+        }
+        if (update.education_experience) {
+            dynamicUpdate['education_experience'] = update.education_experience;
+        }
+        if (update.skills) {
+            dynamicUpdate['skills'] = update.skills;
+        }
         // Add more fields as necessary
 
         // Perform the update

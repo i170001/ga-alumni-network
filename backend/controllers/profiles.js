@@ -80,7 +80,7 @@ async function createProfile(req, res) {
             ga_experience: gaExperience,
             work_experience: workExperience,
             education_experience: educationExperience,
-            profile_pic: profilePic,
+            profilePic: profilePic,
             skills: skills,
         };
 
