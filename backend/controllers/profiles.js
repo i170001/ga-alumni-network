@@ -37,9 +37,14 @@ module.exports = {
 
 async function getProfile(req, res) {
     try {
-        const data = await profileModel.getProfile(req.params.id);
-        res.json({profile: data})
-        } catch (error) {
+        console.log("Fetching profile for listing_id:", req.params.listing_id);
+        const profile = await profileModel.getProfile(req.params.listing_id);
+        if (!profile) {
+            return res.status(404).json({ message: 'Profile not found' });
+        }
+        res.json(profile);
+    } catch (error) {
+        console.error("Error fetching profile:", error);
         res.status(500).json({ message: 'Internal Server Error' });
     }
 }

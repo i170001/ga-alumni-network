@@ -18,11 +18,11 @@ module.exports = {
 
 async function getProfile(listing_id) {
     try {
-    const profile = await profilesDao.findOne({listing_id});
-        return profile
+        const profile = await profilesDao.findOne({ listing_id });
+        return profile;
     } catch (error) {
-        throw new Error (error.message) 
-    }     
+        throw new Error(error.message);
+    }
 }
 
 async function createProfile(profileData) {
