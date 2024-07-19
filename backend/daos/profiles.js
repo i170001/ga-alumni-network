@@ -153,6 +153,10 @@ const profileSchema = new Schema({
         required: true
     }, 
 
+    profilePic: {
+        type: String //for Cloudinary imageURL
+    },
+
     date_posted: {
         type: Date, 
         default: Date.now
