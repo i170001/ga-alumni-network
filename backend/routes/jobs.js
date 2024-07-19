@@ -1,20 +1,24 @@
-var express = require('express');
-var router = express.Router();
-var jobsCtrl = require('../controllers/jobs');
+const express = require('express');
+const router = express.Router();
+const jobsCtrl = require('../controllers/jobs');
+var securityMiddleware = require('../middlewares/security');
 
-/* GET Jobs data (all users) */
+// Middleware applied to all routes in this router
+router.use(securityMiddleware.checkJWT);
+
+// GET all jobs (for all users)
 router.get("/", jobsCtrl.getJobs);
 
-// Route for fetching jobs by user_id
+// GET jobs by user_id
 router.get("/user/:user_id", jobsCtrl.getUserJobs);
 
-/* POST Job data (create post by user) */
-router.post("/createjob", jobsCtrl.createJob);
+// POST create job (authenticated user only)
+router.post("/createjob", securityMiddleware.checkSignin, jobsCtrl.createJob);
 
-/* PATCH Job data (create post by user) */
-router.patch("/updatejob/:listing_id", jobsCtrl.updateJob);
+// PATCH update job (owner or admin only)
+router.patch("/updatejob/:listing_id", securityMiddleware.checkPermission, securityMiddleware.checkSignin, jobsCtrl.updateJob);
 
-/* DELETE Job data (create post by user) */
-router.delete("/deletejob/:listing_id", jobsCtrl.deleteJob);
+// DELETE delete job (owner or admin only)
+router.delete("/deletejob/:listing_id", securityMiddleware.checkPermission, securityMiddleware.checkSignin, jobsCtrl.deleteJob);
 
 module.exports = router;
