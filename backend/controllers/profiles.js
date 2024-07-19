@@ -51,7 +51,7 @@ module.exports = {
 
 async function getProfile(req, res) {
     try {
-      console.log("request body: ", req.body)
+      // console.log("request body: ", req.body)
       const { user_id } = req.params;
       const data = await profileModel.getUserProfile(user_id);
       res.json({ profile: data });
@@ -85,7 +85,7 @@ async function createProfile(req, res) {
         };
 
         const { success, data, error } = await profileModel.createProfile(profileData);
-        console.log("Controller profileData: ", profileData)
+        // console.log("Controller profileData: ", profileData)
 
         if (!success) {
             return res.status(400).json({ error });
@@ -102,7 +102,7 @@ async function createProfile(req, res) {
 async function updateProfile(req, res) {
     try {
       // console.log(" Controller request.body.listing_id: ", req.body.listing_id)
-      console.log(" Controller request.body: ", req.body)
+      // console.log(" Controller request.body: ", req.body)
       const { listing_id } = req.params;
       const updatedProfile = req.body;
   
