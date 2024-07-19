@@ -14,6 +14,9 @@ router.post('/signup', usersCtrl.signupUser)
 /* GET signin details */
 router.get('/signin', usersCtrl.getSigninDetails)
 
+/* GET user details */
+router.get('/:user_id', usersCtrl.getUser)
+
 router.post("/signin", usersCtrl.signinUser);
 
 router.post("/checkSignin", securityMiddleware.checkSignin, usersCtrl.checkSignin);

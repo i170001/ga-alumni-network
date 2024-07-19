@@ -3,12 +3,28 @@ const Profiles = require("../models/profiles");
 const Jobs = require("../models/jobs");
 
 module.exports = {
-    signupUser,
-    getSigninDetails,
-    signinUser,
-    checkSignin,
-    checkPermission,
-    signoutUser
+  getUser,
+  signupUser,
+  getSigninDetails,
+  signinUser,
+  checkSignin,
+  checkPermission,
+  signoutUser
+}
+
+async function getUser(req, res) {
+  try {
+    const { user_id } = req.params;
+    console.log('Fetching user for user_id:', user_id); // Log user_id to check if it's coming through correctly
+    const data = await Users.getUser(user_id);
+    if (!data) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    res.json({ user: data });
+  } catch (err) {
+    console.error('Error fetching user:', err.message); // Log detailed error message
+    res.status(500).json({ errorMsg: err.message });
+  }
 }
 
 async function signupUser(req, res) {
