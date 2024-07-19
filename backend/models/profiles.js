@@ -49,6 +49,7 @@ async function createProfile(profileData) {
 
 async function updateProfile(filter, update, options) {
     try {
+        console.log("update: ", update)
         // Construct update object dynamically
         const dynamicUpdate = {};
         if (update.personalDetails) {
@@ -60,14 +61,15 @@ async function updateProfile(filter, update, options) {
         if (update.profilePic) {
             dynamicUpdate['profilePic'] = update.profilePic;
         }
-        if (update.ga_experience) {
-            dynamicUpdate['ga_experience'] = update.ga_experience;
+        if (update.gaExperience) {
+            dynamicUpdate['ga_experience'] = update.gaExperience;
         }
-        if (update.work_experience) {
-            dynamicUpdate['work_experience'] = update.work_experience;
+        if (update.workExperience) {
+            dynamicUpdate['work_experience'] = update.workExperience;
         }
-        if (update.education_experience) {
-            dynamicUpdate['education_experience'] = update.education_experience;
+        if (update.educationExperience) {
+            // console.log("educationExperience: ",update.educationExperience )
+            dynamicUpdate['education_experience'] = update.educationExperience;
         }
         if (update.skills) {
             dynamicUpdate['skills'] = update.skills;
